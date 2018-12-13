@@ -12,19 +12,33 @@ questionNum = 0 #number of questions already asked
 
 # Bank of all questions
 questionBank = ["Which is NOT an element that is common in life?", \
-"Which of the following is NOT a property of water?"]
+"Which of the following is NOT a property of water?", \
+"Which of the following contains a trans bond?"]
 # Bank of all multiple choice responses
 responseBank = ["A: K \n B: H \n C: C \n D: Mn \n", \
-"A: Cohesion \n B: Adhesion \n C: High vapor pressure \n D: High boiling point \n"]
+"A: Cohesion \n B: Adhesion \n C: High vapor pressure \n D: High boiling point \n", \
+"""A:
+ H     H
+  \   /
+   C=C
+  /   \ 
+ X     X
+
+B:
+ X     H
+  \   /
+   C=C
+  /   \ 
+ H     X
+"""]
 # Bank of correct answers
-correctBank = ["D", "D"]
+correctBank = ["D", \
+"D", \
+"B"]
 
 totalQuestionNum = len(questionBank)
 
 questionOrder = rand.sample(range(int(totalQuestionNum)), int(totalQuestionNum)) #step through this list to choose the next question
-
-# print(questionOrder)
-# print(questionNum)
 
 quijoteStanding = """                  /\       ,,                                        ./
           .---.   ||      /||                                       //
@@ -37,7 +51,7 @@ __        {|\ \'  / )  /     \\O|                              |_|\\
   `-.____.-| \ \ /\/  /       `'                               |_| \\
  -     ////|  \ Y /| |                                         [ ]  \\
    |   |||||`-|\^/|| |                                         F-J   `\
-       |||||`-| " [] /                                        J.-'L
+       |||||`-| " [] /                                        J.-'L 
      _ \\\\/`-|   []|\                                        ]`-.[
  ) |`---``| _ |__([]| \                                       |.-'|
   /       |/ `|   FJ|\ \                                      [`-.]
@@ -120,12 +134,13 @@ def askQuestion(qn):
 	else:
 		currentQuestion = questionOrder[qn]
 		print(questionBank[currentQuestion] + "\n")
-		currentAnswer = getInput(responseBank[qn], type='str')
+		currentAnswer = getInput(responseBank[currentQuestion], type='str')
 		if(currentAnswer == correctBank[currentQuestion]):
 			playerAttack()
+			print("Great job!")
 		else:
 			dragonAttack()
-			print("The correct answer was:" + correctBank[currentQuestion])
+			print("Better luck next time! The correct answer was:" + correctBank[currentQuestion])
 	
 # Start Game	
 print(quijoteStanding)	
