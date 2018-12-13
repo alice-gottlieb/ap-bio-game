@@ -23,8 +23,8 @@ totalQuestionNum = len(questionBank)
 
 questionOrder = rand.sample(range(int(totalQuestionNum)), int(totalQuestionNum)) #step through this list to choose the next question
 
-print(questionOrder)
-print(questionNum)
+# print(questionOrder)
+# print(questionNum)
 
 quijoteStanding = """                  /\       ,,                                        ./
           .---.   ||      /||                                       //
