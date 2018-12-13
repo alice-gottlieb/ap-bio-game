@@ -1,12 +1,30 @@
 import random as rand
 
-directions = "Welcome to the Kevin's AP Bio Semester 1 Review! Slay dragons with correct answers and fall prey their devestating wind attacks with wrong answers! Press S for settings or Enter to Start \n"
+directions = "Welcome to the Kevin Gottlieb's AP Bio Semester 1 Review! Slay dragons with correct answers and fall prey their devestating wind attacks with wrong answers! Press S for settings or Enter to Start \n"
 
 playerHp = 100
 dragonHp = 100
 
 playerDamage = 10 # The damage the player does to the dragon
-dragonAttack = 20 #The damage the dragon does to the player for incorrect questions
+dragonDamage = 20 #The damage the dragon does to the player for incorrect questions
+
+questionNum = 0 #number of questions already asked
+
+# Bank of all questions
+questionBank = ["Which is NOT an element that is common in life?", \
+"Which of the following is NOT a property of water?"]
+# Bank of all multiple choice responses
+responseBank = ["A: K \n B: H \n C: C \n D: Mn \n", \
+"A: Cohesion \n B: Adhesion \n C: High vapor pressure \n D: High boiling point \n"]
+# Bank of correct answers
+correctBank = ["D", "D"]
+
+totalQuestionNum = len(questionBank)
+
+questionOrder = rand.sample(range(int(totalQuestionNum)), int(totalQuestionNum)) #step through this list to choose the next question
+
+print(questionOrder)
+print(questionNum)
 
 quijoteStanding = """                  /\       ,,                                        ./
           .---.   ||      /||                                       //
@@ -81,13 +99,34 @@ def checkHp():
 		return 0 #Show that neither dragon nor player is dead			
 
 def playerAttack():
-	dragonHp -= playerAttack
-	checkHp()
+	global dragonHp
+	dragonHp -= playerDamage
+	print(quijoteCharging)
 
 def dragonAttack():
-	playerHp -= dragonAttack
-	checkHp()
+	global playerHp
+	playerHp -= dragonDamage
+	print(quijoteOverwhelmed)
+	
+def showStats():
+	print("Your HP: " + str(playerHp))
+	print("Dragon's HP: " + str(dragonHp))
 
+def askQuestion(qn):
+	if(qn >= totalQuestionNum):
+		print("It seems we've run out of question, you win by default!")
+		global dragonHp
+		dragonHp = 0
+	else:
+		currentQuestion = questionOrder[qn]
+		print(questionBank[currentQuestion] + "\n")
+		currentAnswer = getInput(responseBank[qn], type='str')
+		if(currentAnswer == correctBank[currentQuestion]):
+			playerAttack()
+		else:
+			dragonAttack()
+			print("The correct answer was:" + correctBank[currentQuestion])
+	
 # Start Game	
 print(quijoteStanding)	
 
@@ -97,5 +136,11 @@ if(start == 'S' or start == 's'):
 	dragonHp = getInput("Dragon HP (default 100):", type='int')
 	playerDamage = getInput("Player Damage for each correct answer (default 10):", type='int')
 	dragonDamage = getInput("Dragon Damage for each incorrect answer (default 20):", type='int')
-else: #start Game!
-	print(1+1)
+	
+#start Game!
+while(checkHp() == 0):
+	showStats()
+	askQuestion(questionNum)
+	questionNum += 1
+
+print("Rerun the file to play again!")
