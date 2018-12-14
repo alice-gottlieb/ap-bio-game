@@ -1,6 +1,6 @@
 import random as rand
 
-directions = "Welcome to the Kevin Gottlieb's AP Bio Semester 1 Review! Slay dragons with correct answers and fall prey to their devestating wind attacks with wrong answers! Press S for settings or Enter to Start \n"
+directions = "Welcome to the Kevin Gottlieb's AP Bio Semester 1 Review! Slay dragons with correct answers (Make sure they're capital letters!) and fall prey to their devestating wind attacks with wrong answers! Press S for settings or Enter to Start \n"
 
 playerHp = 100
 dragonHp = 100
@@ -15,7 +15,12 @@ questionBank = ["Which is NOT an element that is common in life?", \
 "Which of the following is NOT a property of water?", \
 "Which of the following contains a trans bond?", \
 "An amphiphatic molecule...", \
-"Co-transport is..."]
+"Co-transport is...", \
+"Which is a monomer?", \
+"Hemeglobin is made of multiple polypeptide subunits. What is the highest level of structure it has?", \
+"If a solution has a water potential of 10 Pa and a pressure potential of 3 Pa, what is its solute potential?", \
+"Which of the following supports the endosymbiotic theory?", \
+"]
 # Bank of all multiple choice responses
 responseBank = ["A: K \n B: H \n C: C \n D: Mn \n", \
 "A: Cohesion \n B: Adhesion \n C: High vapor pressure \n D: High boiling point \n", \
@@ -35,14 +40,22 @@ B:
 """
 , \
 "A: Has both positively and negatively charged ends. \n B: Is present in all membrane formation \n C: Has both hydrophobic and hydrophilic portions \n D: Is critical to facilitated diffusion \n", \
-"A: A type of facilitated diffusion \n B: Unable to transfer molecules against their concentraion gradients \n C: Uses vesicles for transport \n D: A and B \n E: A and C \n"]
+"A: A type of facilitated diffusion \n B: Unable to transfer molecules against their concentraion gradients \n C: Uses vesicles for transport \n D: A and B \n E: A and C \n", \
+"A: Peptides \n B: Monosaccharides \n C: Amines \n D: Nucleotides \n",
+"A: Primary \n B: Secondary \n C: Tertiary \n D: Quaternary \n",
+"A: 13 kPa \n B: 13 Pa \n C: 7 Pa \n D: 30 Pa \n", \
+"A: Chroloplasts absorb green light best and plants appear green \n B: Mitochondria contain their own set of DNA \n C: Mitochondria are the common to all eukaryotes \n D: Chroloplasts are not present in animals \n"]
 
 # Bank of correct answers
 correctBank = ["D", \
 "D", \
 "B", \
 "C", \
-"E"]
+"E", \
+"D", \
+"D", \
+"C", \
+"B"]
 
 totalQuestionNum = len(questionBank)
 
