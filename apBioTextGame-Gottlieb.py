@@ -1,6 +1,6 @@
 import random as rand
 
-directions = "Welcome to the Kevin Gottlieb's AP Bio Semester 1 Review! Slay dragons with correct answers (Make sure they're capital letters!) and fall prey to their devestating wind attacks with wrong answers! Press S for settings or Enter to Start \n"
+directions = "Welcome to the Kevin Gottlieb's AP Bio Semester 1 Review! \n Slay dragons with correct answers (Make sure they're capital letters!) and fall prey to their devestating wind attacks with wrong answers! Press S for settings or Enter to Start \n"
 
 playerHp = 100
 dragonHp = 100
@@ -19,8 +19,7 @@ questionBank = ["Which is NOT an element that is common in life?", \
 "Which is a monomer?", \
 "Hemeglobin is made of multiple polypeptide subunits. What is the highest level of structure it has?", \
 "If a solution has a water potential of 10 Pa and a pressure potential of 3 Pa, what is its solute potential?", \
-"Which of the following supports the endosymbiotic theory?", \
-"]
+"Which of the following supports the endosymbiotic theory?"]
 # Bank of all multiple choice responses
 responseBank = ["A: K \n B: H \n C: C \n D: Mn \n", \
 "A: Cohesion \n B: Adhesion \n C: High vapor pressure \n D: High boiling point \n", \
@@ -41,7 +40,7 @@ B:
 , \
 "A: Has both positively and negatively charged ends. \n B: Is present in all membrane formation \n C: Has both hydrophobic and hydrophilic portions \n D: Is critical to facilitated diffusion \n", \
 "A: A type of facilitated diffusion \n B: Unable to transfer molecules against their concentraion gradients \n C: Uses vesicles for transport \n D: A and B \n E: A and C \n", \
-"A: Peptides \n B: Monosaccharides \n C: Amines \n D: Nucleotides \n",
+"A: Peptides \n B: Disaccharides \n C: Amines \n D: Nucleotides \n",
 "A: Primary \n B: Secondary \n C: Tertiary \n D: Quaternary \n",
 "A: 13 kPa \n B: 13 Pa \n C: 7 Pa \n D: 30 Pa \n", \
 "A: Chroloplasts absorb green light best and plants appear green \n B: Mitochondria contain their own set of DNA \n C: Mitochondria are the common to all eukaryotes \n D: Chroloplasts are not present in animals \n"]
@@ -51,7 +50,7 @@ correctBank = ["D", \
 "D", \
 "B", \
 "C", \
-"E", \
+"A", \
 "D", \
 "D", \
 "C", \
@@ -162,21 +161,33 @@ def askQuestion(qn):
 		else:
 			dragonAttack()
 			print("Better luck next time! The correct answer was:" + correctBank[currentQuestion])
-	
-# Start Game	
-print(quijoteStanding)	
 
-start = getInput(directions, type='str')
-if(start == 'S' or start == 's'):
-	playerHp = getInput("Player HP (default 100):", type='int')
-	dragonHp = getInput("Dragon HP (default 100):", type='int')
-	playerDamage = getInput("Player Damage for each correct answer (default 20):", type='int')
-	dragonDamage = getInput("Dragon Damage for each incorrect answer (default 20):", type='int')
+def startGame():
+	global playerHp
+	global dragonHp
 	
-#start Game!
-while(checkHp() == 0):
-	showStats()
-	askQuestion(questionNum)
-	questionNum += 1
+	# Start Game	
+	print(quijoteStanding)	
 
-print("Rerun the file to play again!")
+	start = getInput(directions, type='str')
+	if(start == 'S' or start == 's'):
+		playerHp = getInput("Player HP (default 100):", type='int')
+		dragonHp = getInput("Dragon HP (default 100):", type='int')
+		playerDamage = getInput("Player Damage for each correct answer (default 20):", type='int')
+		dragonDamage = getInput("Dragon Damage for each incorrect answer (default 20):", type='int')
+		
+	while(checkHp() == 0):
+		showStats()
+		global questionNum
+		askQuestion(questionNum)
+		questionNum += 1
+	
+	if(getInput("Would you like to play again? Y/N", type='str') == "Y"):
+		playerHp = 100
+		dragonHp = 100
+		questionNum = 0
+		global questionOrder
+		questionOrder = rand.sample(range(int(totalQuestionNum)), int(totalQuestionNum))
+		startGame()
+	
+startGame()
