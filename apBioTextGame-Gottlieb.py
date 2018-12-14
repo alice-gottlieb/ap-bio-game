@@ -5,7 +5,7 @@ directions = "Welcome to the Kevin Gottlieb's AP Bio Semester 1 Review! Slay dra
 playerHp = 100
 dragonHp = 100
 
-playerDamage = 10 # The damage the player does to the dragon
+playerDamage = 20 # The damage the player does to the dragon
 dragonDamage = 20 #The damage the dragon does to the player for incorrect questions
 
 questionNum = 0 #number of questions already asked
@@ -13,7 +13,9 @@ questionNum = 0 #number of questions already asked
 # Bank of all questions
 questionBank = ["Which is NOT an element that is common in life?", \
 "Which of the following is NOT a property of water?", \
-"Which of the following contains a trans bond?"]
+"Which of the following contains a trans bond?", \
+"An amphiphatic molecule...", \
+"Co-transport is..."]
 # Bank of all multiple choice responses
 responseBank = ["A: K \n B: H \n C: C \n D: Mn \n", \
 "A: Cohesion \n B: Adhesion \n C: High vapor pressure \n D: High boiling point \n", \
@@ -30,11 +32,17 @@ B:
    C=C
   /   \ 
  H     X
-"""]
+"""
+, \
+"A: Has both positively and negatively charged ends. \n B: Is present in all membrane formation \n C: Has both hydrophobic and hydrophilic portions \n D: Is critical to facilitated diffusion \n", \
+"A: A type of facilitated diffusion \n B: Unable to transfer molecules against their concentraion gradients \n C: Uses vesicles for transport \n D: A and B \n E: A and C \n"]
+
 # Bank of correct answers
 correctBank = ["D", \
 "D", \
-"B"]
+"B", \
+"C", \
+"E"]
 
 totalQuestionNum = len(questionBank)
 
@@ -128,7 +136,7 @@ def showStats():
 
 def askQuestion(qn):
 	if(qn >= totalQuestionNum):
-		print("It seems we've run out of question, you win by default!")
+		print("It seems we've run out of questions, you win by default!")
 		global dragonHp
 		dragonHp = 0
 	else:
@@ -149,7 +157,7 @@ start = getInput(directions, type='str')
 if(start == 'S' or start == 's'):
 	playerHp = getInput("Player HP (default 100):", type='int')
 	dragonHp = getInput("Dragon HP (default 100):", type='int')
-	playerDamage = getInput("Player Damage for each correct answer (default 10):", type='int')
+	playerDamage = getInput("Player Damage for each correct answer (default 20):", type='int')
 	dragonDamage = getInput("Dragon Damage for each incorrect answer (default 20):", type='int')
 	
 #start Game!
