@@ -1,6 +1,6 @@
 import random as rand
 
-directions = "Welcome to the Kevin Gottlieb's AP Bio Semester 1 Review! Slay dragons with correct answers and fall prey their devestating wind attacks with wrong answers! Press S for settings or Enter to Start \n"
+directions = "Welcome to the Kevin Gottlieb's AP Bio Semester 1 Review! Slay dragons with correct answers and fall prey to their devestating wind attacks with wrong answers! Press S for settings or Enter to Start \n"
 
 playerHp = 100
 dragonHp = 100
