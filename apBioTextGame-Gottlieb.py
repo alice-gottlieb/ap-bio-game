@@ -182,7 +182,7 @@ def startGame():
 		askQuestion(questionNum)
 		questionNum += 1
 	
-	if(getInput("Would you like to play again? Y/N", type='str') == "Y"):
+	if(getInput("Would you like to play again? Y/N \n", type='str') == "Y"):
 		playerHp = 100
 		dragonHp = 100
 		questionNum = 0
